@@ -3,6 +3,7 @@ package com.example.boxingtimer
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var breakTimeInput: EditText
     private lateinit var roundsInput: EditText
     private lateinit var roundCounter: TextView
+    private lateinit var type: TextView
 
     private var roundTime: Long = 0L
     private var breakTime: Long = 0L
@@ -43,6 +45,10 @@ class MainActivity : AppCompatActivity() {
         breakTimeInput = findViewById(R.id.inBreak)
         roundsInput = findViewById(R.id.inRounds)
         roundCounter = findViewById(R.id.ttCurrentRound)
+        type = findViewById(R.id.ttFight)
+
+        resetButton.visibility = View.GONE
+        resetButton.isEnabled = false
 
         // Start/Stop Button
         startStopButton.setOnClickListener {
@@ -67,7 +73,12 @@ class MainActivity : AppCompatActivity() {
         currentRound = 0
         isRunning = true
 
-        startStopButton.text = "Stop"
+        type.text = "Fight"
+        roundCounter.visibility = View.VISIBLE
+        type.visibility = View.VISIBLE
+        resetButton.visibility = View.VISIBLE
+        resetButton.isEnabled = true
+
         runNextPhase()
     }
 
@@ -88,9 +99,11 @@ class MainActivity : AppCompatActivity() {
                 playSound()
                 if (isRoundPhase) {
                     isRoundPhase = false
+                    type.text = "Break"
                 } else {
                     currentRound++
                     isRoundPhase = true
+                    type.text = "Fight"
                 }
 
                 if (currentRound < totalRounds) {
@@ -106,7 +119,6 @@ class MainActivity : AppCompatActivity() {
     private fun stopTimer() {
         timer?.cancel()
         isRunning = false
-        startStopButton.text = getString(R.string.start)
     }
 
     private fun resetTimer() {
@@ -116,7 +128,10 @@ class MainActivity : AppCompatActivity() {
         isRunning = false
         isRoundPhase = true
         currentRound = 0
-        startStopButton.text = getString(R.string.start)
+        resetButton.visibility = View.GONE
+        resetButton.isEnabled = false
+        roundCounter.visibility = View.GONE
+        type.visibility = View.GONE
     }
 
     private fun playSound() {

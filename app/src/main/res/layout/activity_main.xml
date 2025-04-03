@@ -30,76 +30,82 @@
         android:text="Restart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <Button
         android:id="@+id/btStart"
-        android:layout_width="106dp"
-        android:layout_height="54dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:backgroundTint="#9D0000"
-        android:text="Start"
+        android:drawableLeft="@drawable/play_icon"
+        android:text="."
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
+        app:layout_constraintVertical_bias="0.517" />
 
     <EditText
         android:id="@+id/inRound"
-        android:layout_width="218dp"
-        android:layout_height="65dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
         android:hint="Round (sec)"
         android:inputType="number"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
+        app:layout_constraintVertical_bias="0.648" />
 
     <EditText
         android:id="@+id/inBreak"
-        android:layout_width="217dp"
-        android:layout_height="63dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
         android:hint="Break (sec)"
         android:inputType="number"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.738" />
+        app:layout_constraintVertical_bias="0.758" />
 
     <EditText
         android:id="@+id/inRounds"
-        android:layout_width="222dp"
-        android:layout_height="61dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
         android:hint="Rounds"
         android:inputType="number"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.855" />
+        app:layout_constraintVertical_bias="0.87" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="344dp"
-        android:layout_height="36dp"
+        android:layout_width="343dp"
+        android:layout_height="50dp"
         android:backgroundTint="@android:color/transparent"
         android:progressTint="#F00000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,5 +128,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.352" />
+
+    <TextView
+        android:id="@+id/ttFight"
+        android:layout_width="166dp"
+        android:layout_height="34dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.413" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
