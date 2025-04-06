@@ -22,6 +22,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var roundsInput: EditText
     private lateinit var roundCounter: TextView
     private lateinit var type: TextView
+    private lateinit var getReady: TextView
+    private lateinit var roundTime2: TextView
+    private lateinit var breakTime2: TextView
+    private lateinit var rounds2: TextView
+    private lateinit var roundTime2Text: TextView
+    private lateinit var breakTime2Text: TextView
+    private lateinit var rounds2Text: TextView
 
     private var roundTime: Long = 0L
     private var breakTime: Long = 0L
@@ -46,6 +53,13 @@ class MainActivity : AppCompatActivity() {
         roundsInput = findViewById(R.id.inRounds)
         roundCounter = findViewById(R.id.ttCurrentRound)
         type = findViewById(R.id.ttFight)
+        getReady = findViewById(R.id.ttGetReady)
+        roundTime2 = findViewById(R.id.ttRound)
+        breakTime2 = findViewById(R.id.ttBreak)
+        rounds2 = findViewById(R.id.ttRounds)
+        roundTime2Text = findViewById(R.id.ttRoundText)
+        breakTime2Text = findViewById(R.id.ttBreakText)
+        rounds2Text = findViewById(R.id.ttRoundsText)
 
         resetButton.visibility = View.GONE
         resetButton.isEnabled = false
@@ -78,11 +92,27 @@ class MainActivity : AppCompatActivity() {
         type.visibility = View.VISIBLE
         resetButton.visibility = View.VISIBLE
         resetButton.isEnabled = true
+        roundTimeInput.visibility = View.GONE
+        breakTimeInput.visibility = View.GONE
+        roundsInput.visibility = View.GONE
 
-        runNextPhase()
+        roundTime2.text = roundTimeInput.text
+        breakTime2.text = breakTimeInput.text
+        rounds2.text = roundsInput.text
+        roundTime2Text.visibility = View.VISIBLE
+        breakTime2Text.visibility = View.VISIBLE
+        rounds2Text.visibility = View.VISIBLE
+
+        startStopButton.animate()
+            .translationY(280f)
+            .setDuration(500)
+            .start();
+
+        getReady()
     }
 
     private fun runNextPhase() {
+        getReady.visibility = View.GONE
         val timeToUse = if (isRoundPhase) roundTime else breakTime
         timer = object : CountDownTimer(timeToUse, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -92,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                 progressCircle.progress = progress
 
                 var reallyCurrentRound = currentRound + 1
-                roundCounter.text = "$reallyCurrentRound/$totalRounds rounds"
+                roundCounter.text = "$reallyCurrentRound/$totalRounds"
             }
 
             override fun onFinish() {
@@ -132,6 +162,45 @@ class MainActivity : AppCompatActivity() {
         resetButton.isEnabled = false
         roundCounter.visibility = View.GONE
         type.visibility = View.GONE
+
+        roundTimeInput.visibility = View.VISIBLE
+        breakTimeInput.visibility = View.VISIBLE
+        roundsInput.visibility = View.VISIBLE
+
+        roundTime2.text = ""
+        breakTime2.text = ""
+        rounds2.text = ""
+        roundTime2Text.visibility = View.GONE
+        breakTime2Text.visibility = View.GONE
+        rounds2Text.visibility = View.GONE
+
+        startStopButton.animate()
+            .translationY(0f)
+            .setDuration(500)
+            .start();
+    }
+
+    private fun getReady() {
+        getReady.visibility = View.VISIBLE
+        val totalTime = 4000L // 3..2..1..Go! (4 steps)
+        val interval = 1000L  // Every second
+
+        object : CountDownTimer(totalTime, interval) {
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsLeft = (millisUntilFinished / 1000).toInt()
+                getReady.text = when (secondsLeft) {
+                    3 -> "3"
+                    2 -> "2"
+                    1 -> "1"
+                    else -> ""
+                }
+            }
+
+            override fun onFinish() {
+                playSound()
+                runNextPhase()
+            }
+        }.start()
     }
 
     private fun playSound() {
