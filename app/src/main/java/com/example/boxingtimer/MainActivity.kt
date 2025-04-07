@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AppCompatActivity
 import java.util.concurrent.TimeUnit
 
@@ -42,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.red)
 
         // Initialize views
         progressCircle = findViewById(R.id.progressBar)
@@ -204,7 +207,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playSound() {
-        val mediaPlayer = MediaPlayer.create(this, R.raw.boxing_bell)
+        val mediaPlayer = MediaPlayer.create(this, R.raw.boxingbell)
         mediaPlayer.start()
     }
 }
