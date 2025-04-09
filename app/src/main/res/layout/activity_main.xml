@@ -122,36 +122,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.101" />
 
-    <Button
-        android:id="@+id/btReset"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:backgroundTint="#9D0000"
-        android:drawableLeft="@drawable/reset_icon"
-        android:text="."
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
-
-    <Button
-        android:id="@+id/btStart"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:backgroundTint="#9D0000"
-        android:drawableLeft="@drawable/play_icon"
-        android:text="."
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
-
     <EditText
         android:id="@+id/inRound"
         android:layout_width="120dp"
@@ -265,5 +235,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btReset"
+        android:layout_width="79dp"
+        android:layout_height="72dp"
+        android:backgroundTint="@color/red"
+        android:contentDescription="NULL"
+        android:src="@drawable/reset_icon"
+        android:background="@drawable/circle_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.731" />
+
+    <ImageButton
+        android:id="@+id/btStart"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/red"
+        android:contentDescription="NULL"
+        android:background="@drawable/circle_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.507"
+        app:srcCompat="@drawable/play_icon" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -16,8 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var progressCircle: ProgressBar
     private lateinit var timerText: TextView
-    private lateinit var startStopButton: Button
-    private lateinit var resetButton: Button
+    private lateinit var startStopButton: ImageButton
+    private lateinit var resetButton: ImageButton
     private lateinit var roundTimeInput: EditText
     private lateinit var breakTimeInput: EditText
     private lateinit var roundsInput: EditText
@@ -106,8 +107,10 @@ class MainActivity : AppCompatActivity() {
         breakTime2Text.visibility = View.VISIBLE
         rounds2Text.visibility = View.VISIBLE
 
+        startStopButton.setImageResource(R.drawable.pause_icon)
+
         startStopButton.animate()
-            .translationY(280f)
+            .translationY(200f)
             .setDuration(500)
             .start();
 
@@ -115,6 +118,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun runNextPhase() {
+        startStopButton.isEnabled = true
+        resetButton.isEnabled = true
         getReady.visibility = View.GONE
         val timeToUse = if (isRoundPhase) roundTime else breakTime
         timer = object : CountDownTimer(timeToUse, 1000) {
@@ -152,6 +157,7 @@ class MainActivity : AppCompatActivity() {
     private fun stopTimer() {
         timer?.cancel()
         isRunning = false
+        startStopButton.setImageResource(R.drawable.play_icon)
     }
 
     private fun resetTimer() {
@@ -177,6 +183,8 @@ class MainActivity : AppCompatActivity() {
         breakTime2Text.visibility = View.GONE
         rounds2Text.visibility = View.GONE
 
+        startStopButton.setImageResource(R.drawable.play_icon)
+
         startStopButton.animate()
             .translationY(0f)
             .setDuration(500)
@@ -185,6 +193,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun getReady() {
         getReady.visibility = View.VISIBLE
+        startStopButton.isEnabled = false
+        resetButton.isEnabled = false
         val totalTime = 4000L // 3..2..1..Go! (4 steps)
         val interval = 1000L  // Every second
 
