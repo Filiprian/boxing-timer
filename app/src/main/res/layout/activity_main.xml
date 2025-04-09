@@ -183,15 +183,15 @@
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="343dp"
-        android:layout_height="50dp"
+        android:layout_height="20dp"
         android:backgroundTint="@android:color/transparent"
+        android:progressDrawable="@drawable/progress_bar"
         android:progressTint="#F00000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284" />
+        app:layout_constraintVertical_bias="0.265" />
 
     <TextView
         android:id="@+id/ttCurrentRound"
